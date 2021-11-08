@@ -27,7 +27,6 @@ public class WeatherServiceApplication {
 }
 
 @RestController
-@RequestMapping("/aviation")
 class AirportController {
 	@Value("${avwx-token:NoValidTokenRetrieved}")
 	private String token;
@@ -35,6 +34,8 @@ class AirportController {
 
 	@GetMapping("/metar/{id}")
 	public final Mono<METAR> retrieveMETAR(@PathVariable String id) {
+		System.out.println(">>> retrieveMETAR, ID: " + id);
+
 		return client.get()
 				.uri("metar/" + id + "?token=" + token)
 				.retrieve()
@@ -43,6 +44,8 @@ class AirportController {
 
 	@GetMapping("/taf/{id}")
 	public final Mono<TAF> retrieveTAF(@PathVariable String id) {
+		System.out.println(">>> retrieveTAF, ID: " + id);
+
 		return client.get()
 				.uri("taf/" + id + "?token=" + token)
 				.retrieve()
