@@ -60,6 +60,7 @@ class AirportController {
 class METAR {
 	private String raw;
 	private Time time;
+	private String flight_rules;
 }
 
 @Data
