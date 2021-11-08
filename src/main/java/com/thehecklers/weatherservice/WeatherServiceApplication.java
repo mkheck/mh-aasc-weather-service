@@ -32,6 +32,11 @@ class AirportController {
 	private String token;
 	private final WebClient client = WebClient.create("https://avwx.rest/api/");
 
+	@GetMapping
+	public final Mono<METAR> retrieveDefaultMETAR() {
+		return retrieveMETAR("KSTL");
+	}
+
 	@GetMapping("/metar/{id}")
 	public final Mono<METAR> retrieveMETAR(@PathVariable String id) {
 		System.out.println(">>> retrieveMETAR, ID: " + id);
