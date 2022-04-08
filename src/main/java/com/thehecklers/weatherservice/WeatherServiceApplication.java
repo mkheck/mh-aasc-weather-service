@@ -27,7 +27,7 @@ public class WeatherServiceApplication {
 }
 
 @RestController
-class AirportController {
+class WeatherController {
 	@Value("${avwx-token:NoValidTokenRetrieved}")
 	private String token;
 	private final WebClient client = WebClient.create("https://avwx.rest/api/");
