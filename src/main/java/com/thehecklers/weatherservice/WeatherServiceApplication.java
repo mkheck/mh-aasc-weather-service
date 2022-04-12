@@ -42,7 +42,7 @@ class WeatherController {
 		System.out.println(">>> retrieveMETAR, ID: " + id);
 
 		return client.get()
-				.uri("metar/" + id + "?token=" + token)
+				.uri("/metar/{id}?token={token}", id, token)
 				.retrieve()
 				.bodyToMono(METAR.class);
 	}
